@@ -1,0 +1,21 @@
+{
+    "name": "engasifrahman/solid-principles",
+    "description": "SOLID Principles in PHP with bad and good examples",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Md. Asif Rahman",
+            "email": "eng.asifrahman@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Solid\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

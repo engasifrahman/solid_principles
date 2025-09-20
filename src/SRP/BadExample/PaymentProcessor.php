@@ -4,10 +4,20 @@ namespace Solid\SRP\BadExample;
 
 use PDO;
 
+/**
+ * Class PaymentProcessor
+ *
+ * Handles payment processing, logging, and notification (violates SRP).
+ */
 class PaymentProcessor
 {
     private PDO $db;
 
+    /**
+     * PaymentProcessor constructor.
+     *
+     * Initializes the in-memory SQLite database and creates the payments table.
+     */
     public function __construct()
     {
         // Use memory SQLite
@@ -20,6 +30,12 @@ class PaymentProcessor
         )");
     }
 
+    /**
+     * Process a payment, log it, and send notification (SRP violation).
+     *
+     * @param float $amount The payment amount
+     * @return void
+     */
     public function pay(float $amount): void
     {
         // 1. Business logic (saving payment)

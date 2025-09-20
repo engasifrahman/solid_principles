@@ -7,13 +7,35 @@ use Solid\Common\EmailNotifier;
 use Solid\Common\PaymentRepository;
 use Solid\ISP\BadExample\Contracts\IPaymentMethod;
 
+/**
+ * Class PaymentProcessor
+ *
+ * Handles payment processing (bad ISP example).
+ */
 class PaymentProcessor
 {
+    /**
+     * @var Logger Logger instance
+     */
     private Logger $logger;
+
+    /**
+     * @var EmailNotifier Notifier instance
+     */
     private EmailNotifier $notifier;
+
+    /**
+     * @var PaymentRepository Payment repository instance
+     */
     private PaymentRepository $repository;
 
-
+    /**
+     * PaymentProcessor constructor.
+     *
+     * @param PaymentRepository $repository
+     * @param Logger $logger
+     * @param EmailNotifier $notifier
+     */
     public function __construct(PaymentRepository $repository, Logger $logger, EmailNotifier $notifier)
     {
         $this->repository = $repository;
@@ -21,7 +43,14 @@ class PaymentProcessor
         $this->notifier = $notifier;
     }
 
-    public function processPayment(IPaymentMethod $paymentMethod, float $amount)
+    /**
+     * Process a normal payment.
+     *
+     * @param IPaymentMethod $paymentMethod
+     * @param float $amount
+     * @return void
+     */
+    public function processPayment(IPaymentMethod $paymentMethod, float $amount): void
     {
         $paymentMethod->pay($amount);
 
@@ -35,7 +64,15 @@ class PaymentProcessor
         $this->notifier->send("Payment of $amount via " . $paymentMethod->getName() . " completed.");
     }
 
-    public function processRecurring(IPaymentMethod $paymentMethod, float $amount, string $interval)
+    /**
+     * Process a recurring payment.
+     *
+     * @param IPaymentMethod $paymentMethod
+     * @param float $amount
+     * @param string $interval
+     * @return void
+     */
+    public function processRecurring(IPaymentMethod $paymentMethod, float $amount, string $interval): void
     {
         $paymentMethod->scheduleRecurring($amount, $interval);
 
@@ -49,7 +86,15 @@ class PaymentProcessor
         $this->notifier->send("Recurring Payment of $amount every $interval via " . $paymentMethod->getName() . " completed.");
     }
 
-    public function processRefund(IPaymentMethod $paymentMethod, float $amount, string $reason)
+    /**
+     * Process a refund.
+     *
+     * @param IPaymentMethod $paymentMethod
+     * @param float $amount
+     * @param string $reason
+     * @return void
+     */
+    public function processRefund(IPaymentMethod $paymentMethod, float $amount, string $reason): void
     {
         $paymentMethod->refund($amount);
 

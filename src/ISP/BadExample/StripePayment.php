@@ -4,13 +4,31 @@ namespace Solid\ISP\BadExample;
 
 use Solid\ISP\BadExample\Contracts\IPaymentmethod;
 
+/**
+ * Class StripePayment
+ *
+ * Implements the IPaymentmethod interface for Stripe payments.
+ *
+ * @package Solid\ISP\BadExample
+ */
 class StripePayment implements IPaymentmethod
 {
+    /**
+     * Get the name of the payment method.
+     *
+     * @return string
+     */
     public function getName(): string
     {
-        return "Stripe";
+        return 'Stripe';
     }
 
+    /**
+     * Process a payment using Stripe.
+     *
+     * @param float $amount The payment amount
+     * @return void
+     */
     public function pay(float $amount): void
     {
         echo "💳 Processing $amount via Stripe...\n";
@@ -21,6 +39,13 @@ class StripePayment implements IPaymentmethod
         echo "💳 Stripe payment of $amount processed successfully.\n\n";
     }
 
+    /**
+     * Schedule a recurring payment using Stripe.
+     *
+     * @param float  $amount   The payment amount
+     * @param string $interval The payment interval (e.g., 'monthly', 'yearly')
+     * @return void
+     */
     public function scheduleRecurring(float $amount, string $interval): void
     {
         echo "💳 Processing tripe recurring payment: $amount every $interval...\n";
@@ -31,6 +56,12 @@ class StripePayment implements IPaymentmethod
         echo "💳 Stripe recurring payment of $amount every $interval processed successfully.\n\n";
     }
 
+    /**
+     * Process a refund using Stripe.
+     *
+     * @param float $amount The refund amount
+     * @return void
+     */
     public function refund(float $amount): void
     {
         echo "💳 Processing $amount refund via Stripe...\n";

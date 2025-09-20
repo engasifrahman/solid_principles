@@ -9,12 +9,24 @@ use Solid\ISP\GoodExample\Contracts\IRefundable;
 use Solid\ISP\GoodExample\Contracts\IPaymentMethod;
 use Solid\ISP\GoodExample\Contracts\IRecurringPayment;
 
+/**
+ * Class PaymentProcessor
+ *
+ * Handles payment processing, recurring payments, and refunds using various payment method contracts.
+ */
 class PaymentProcessor
 {
     private Logger $logger;
     private EmailNotifier $notifier;
     private PaymentRepository $repository;
 
+    /**
+     * PaymentProcessor constructor.
+     *
+     * @param PaymentRepository $repository
+     * @param Logger $logger
+     * @param EmailNotifier $notifier
+     */
     public function __construct(PaymentRepository $repository, Logger $logger, EmailNotifier $notifier)
     {
         $this->repository = $repository;
@@ -22,6 +34,13 @@ class PaymentProcessor
         $this->notifier = $notifier;
     }
 
+    /**
+     * Process a payment.
+     *
+     * @param IPaymentMethod $paymentMethod
+     * @param float $amount
+     * @return void
+     */
     public function processPayment(IPaymentMethod $paymentMethod, float $amount): void
     {
         $paymentMethod->pay($amount);
@@ -36,6 +55,14 @@ class PaymentProcessor
         $this->notifier->send("Payment of $amount via " . $paymentMethod->getName() . " completed.");
     }
 
+    /**
+     * Process a recurring payment.
+     *
+     * @param IRecurringPayment $paymentMethod
+     * @param float $amount
+     * @param string $interval
+     * @return void
+     */
     public function processRecurring(IRecurringPayment $paymentMethod, float $amount, string $interval): void
     {
         $paymentMethod->scheduleRecurring($amount, $interval);
@@ -50,6 +77,14 @@ class PaymentProcessor
         $this->notifier->send("Recurring Payment of $amount every $interval via " . $paymentMethod->getName() . " completed.");
     }
 
+    /**
+     * Process a refund.
+     *
+     * @param IRefundable $paymentMethod
+     * @param float $amount
+     * @param string $reason
+     * @return void
+     */
     public function processRefund(IRefundable $paymentMethod, float $amount, string $reason): void
     {
         $paymentMethod->refund($amount);

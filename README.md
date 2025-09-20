@@ -6,13 +6,16 @@ Each principle contains both a **bad example (violation)** and a **good example 
 ---
 
 ## 🔑 What are SOLID Principles?
-SOLID is an acronym for **five design principles** that help developers create maintainable, scalable, and testable software:
+The **SOLID principles** are five design principles in object-oriented programming that help developers create software that is more maintainable, flexible, and scalable. They were first introduced by **Robert C. Martin** (Uncle Bob) and are a cornerstone of modern software design.
 
-1. **S** – Single Responsibility Principle (SRP)  
-2. **O** – Open/Closed Principle (OCP)  
-3. **L** – Liskov Substitution Principle (LSP)  
-4. **I** – Interface Segregation Principle (ISP)  
-5. **D** – Dependency Inversion Principle (DIP)  
+Applying these principles leads to code that is easier to refactor, test, and understand.
+
+
+* **S - Single Responsibility Principle:** A class should have only one reason to change.
+* **O - Open-Closed Principle:** A class should be open for extension but closed for modification.
+* **L - Liskov Substitution Principle:** Objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program.
+* **I - Interface Segregation Principle:** Clients should not be forced to depend on interfaces they do not use.
+* **D - Dependency Inversion Principle:** High-level modules should not depend on low-level modules; both should depend on abstractions.
 
 ---
 

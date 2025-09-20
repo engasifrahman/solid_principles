@@ -1,7 +1,7 @@
 <?php
 namespace Solid\ISP\GoodExample\Contracts;
 
-interface PaymentMethod
+interface IPaymentMethod
 {
     public function pay(float $amount): void;
 }

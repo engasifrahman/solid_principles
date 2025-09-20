@@ -1,10 +1,10 @@
 <?php
 namespace Solid\ISP\GoodExample;
 
-use Solid\ISP\GoodExample\Contracts\PaymentMethod;
-use Solid\ISP\GoodExample\Contracts\Refundable;
+use Solid\ISP\GoodExample\Contracts\IPaymentMethod;
+use Solid\ISP\GoodExample\Contracts\IRefundable;
 
-class PayPalPayment implements PaymentMethod, Refundable
+class PayPalPayment implements IPaymentMethod, IRefundable
 {
     public function pay(float $amount): void
     {

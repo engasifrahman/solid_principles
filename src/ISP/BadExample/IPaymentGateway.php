@@ -1,7 +1,7 @@
 <?php
 namespace Solid\ISP\BadExample;
 
-interface PaymentGateway
+interface IPaymentGateway
 {
     public function pay(float $amount): void;
 

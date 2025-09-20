@@ -1,7 +1,7 @@
 <?php
 namespace Solid\ISP\BadExample;
 
-class PayPalPayment implements PaymentGateway
+class PayPalPayment implements IPaymentGateway
 {
     public function pay(float $amount): void
     {

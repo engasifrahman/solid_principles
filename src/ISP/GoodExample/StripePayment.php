@@ -1,11 +1,11 @@
 <?php
 namespace Solid\ISP\GoodExample;
 
-use Solid\ISP\GoodExample\Contracts\PaymentMethod;
-use Solid\ISP\GoodExample\Contracts\RecurringPayment;
-use Solid\ISP\GoodExample\Contracts\Refundable;
+use Solid\ISP\GoodExample\Contracts\IPaymentMethod;
+use Solid\ISP\GoodExample\Contracts\IRecurringPayment;
+use Solid\ISP\GoodExample\Contracts\IRefundable;
 
-class StripePayment implements PaymentMethod, RecurringPayment, Refundable
+class StripePayment implements IPaymentMethod, IRecurringPayment, IRefundable
 {
     public function pay(float $amount): void
     {

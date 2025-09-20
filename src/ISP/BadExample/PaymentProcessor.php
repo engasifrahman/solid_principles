@@ -20,7 +20,7 @@ class PaymentProcessor
         $this->notifier = $notifier;
     }
 
-    public function processPayment(PaymentGateway $paymentMethod, float $amount)
+    public function processPayment(IPaymentGateway $paymentMethod, float $amount)
     {
         $paymentMethod->pay($amount);
         $this->repository->save(get_class($paymentMethod), $amount);
@@ -28,12 +28,12 @@ class PaymentProcessor
         $this->notifier->send("Payment of $amount via " . get_class($paymentMethod) . " completed.");
     }
 
-    public function processRecurring(PaymentGateway $paymentMethod, float $amount, string $interval)
+    public function processRecurring(IPaymentGateway $paymentMethod, float $amount, string $interval)
     {
         $paymentMethod->scheduleRecurring($amount, $interval);
     }
 
-    public function processRefund(PaymentGateway $paymentMethod, float $amount)
+    public function processRefund(IPaymentGateway $paymentMethod, float $amount)
     {
         $paymentMethod->refund($amount);
     }

@@ -4,16 +4,15 @@ namespace Solid\ISP\GoodExample;
 use Solid\ISP\Logger;
 use Solid\ISP\EmailNotifier;
 use Solid\ISP\PaymentRepository;
-use Solid\ISP\GoodExample\Contracts\Refundable;
-use Solid\ISP\GoodExample\Contracts\PaymentMethod;
-use Solid\ISP\GoodExample\Contracts\RecurringPayment;
+use Solid\ISP\GoodExample\Contracts\IRefundable;
+use Solid\ISP\GoodExample\Contracts\IPaymentMethod;
+use Solid\ISP\GoodExample\Contracts\IRecurringPayment;
 
 class PaymentProcessor
 {
     private Logger $logger;
     private EmailNotifier $notifier;
     private PaymentRepository $repository;
-
 
     public function __construct(PaymentRepository $repository, Logger $logger, EmailNotifier $notifier)
     {
@@ -22,7 +21,7 @@ class PaymentProcessor
         $this->notifier = $notifier;
     }
 
-    public function processPayment(PaymentMethod $paymentMethod, float $amount): void
+    public function processPayment(IPaymentMethod $paymentMethod, float $amount): void
     {
         $paymentMethod->pay($amount);
         $this->repository->save(get_class($paymentMethod), $amount);
@@ -30,12 +29,12 @@ class PaymentProcessor
         $this->notifier->send("Payment of $amount via " . get_class($paymentMethod) . " completed.");
     }
 
-    public function processRecurring(RecurringPayment $paymentMethod, float $amount, string $interval): void
+    public function processRecurring(IRecurringPayment $paymentMethod, float $amount, string $interval): void
     {
         $paymentMethod->scheduleRecurring($amount, $interval);
     }
 
-    public function processRefund(Refundable $paymentMethod, float $amount): void
+    public function processRefund(IRefundable $paymentMethod, float $amount): void
     {
         $paymentMethod->refund($amount);
     }

@@ -36,7 +36,7 @@ try {
     echo "Error: " . $e->getMessage() . "\n";
 }
 
-echo "==== GOOD ISP ====\n";
+echo "\n==== GOOD ISP ====\n";
 
 $processor = new GoodPaymentProcessor(
     new PaymentRepository(),

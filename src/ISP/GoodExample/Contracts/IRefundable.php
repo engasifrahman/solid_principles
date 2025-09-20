@@ -1,7 +1,7 @@
 <?php
 namespace Solid\ISP\GoodExample\Contracts;
 
-interface Refundable
+interface IRefundable
 {
     public function refund(float $amount): void;
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Solid\ISP\BadExample;
 
-class StripePayment implements PaymentGateway
+class StripePayment implements IPaymentGateway
 {
     public function pay(float $amount): void
     {

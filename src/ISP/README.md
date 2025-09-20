@@ -7,16 +7,16 @@
 ---
 
 ## 🔴 Bad Example
-- Single `PaymentGateway` interface has `pay()`, `scheduleRecurring()`, `refund()`.
+- Single `IPaymentGateway` interface has `pay()`, `scheduleRecurring()`, `refund()`.
 - PayPal forced to implement `scheduleRecurring()` which it does not support.
 - ❌ Violates ISP.
 
 ---
 
 ## 🟢 Good Example
-- Split interfaces: `PaymentMethod`, `RecurringPayment`, `Refundable`.
+- Split interfaces: `IPaymentMethod`, `IRecurringPayment`, `IRefundable`.
 - Stripe implements all supported features.
-- PayPal implements only supported features (`PaymentMethod`, `Refundable`).
+- PayPal implements only supported features (`IPaymentMethod`, `IRefundable`).
 - ✅ ISP respected.
 
 ---

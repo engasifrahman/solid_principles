@@ -27,7 +27,11 @@ class PaymentProcessor
         echo "Payment of $amount processed and saved to in-memory DB.\n";
 
         // 2. Logging
-        file_put_contents(__DIR__ . '/../../../demo/Logs/payment.log', "[BAD][SRP] Payment of $amount processed\n", FILE_APPEND);
+        $logDir = __DIR__ . '/../../../demo/Logs';
+        if (!is_dir($logDir)) {
+            mkdir($logDir, 0777, true);
+        }
+        file_put_contents($logDir . '/app.log', "[BAD][SRP] Payment of $amount processed\n", FILE_APPEND);
 
         // 3. Notification
         echo "Sending email: Payment of $amount completed!\n";

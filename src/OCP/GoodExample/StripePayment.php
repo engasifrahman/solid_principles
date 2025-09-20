@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\OCP\GoodExample;
 
 use Solid\OCP\GoodExample\Contracts\IPaymentMethod;

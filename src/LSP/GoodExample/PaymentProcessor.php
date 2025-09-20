@@ -1,9 +1,10 @@
 <?php
+
 namespace Solid\LSP\GoodExample;
 
-use Solid\LSP\Logger;
-use Solid\LSP\EmailNotifier;
-use Solid\LSP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 use Solid\LSP\GoodExample\Contracts\IPaymentMethod;
 use Solid\LSP\GoodExample\Contracts\IBuyNowPayLater;
 
@@ -23,9 +24,9 @@ class PaymentProcessor
     public function processPayment(IPaymentMethod $paymentMethod, float $amount): void
     {
         $paymentMethod->pay($amount);
-    
+
         // Save the payment
-        $this->repository->save($paymentMethod->getName(), $amount);
+        $this->repository->savePayment($paymentMethod->getName(), $amount);
 
         // Log the payment
         $this->logger->log("[GOOD][LSP] Payment: {$paymentMethod->getName()}, Amount: $amount");
@@ -39,12 +40,12 @@ class PaymentProcessor
         $paymentMethod->buyNowPayLater($amount, $installments);
 
         // Save the payment
-        $this->repository->save($paymentMethod->getName(), $amount);
+        $this->repository->saveBNPL($paymentMethod->getName(), $amount, $installments);
 
         // Log the payment
-        $this->logger->log("[GOOD][LSP] BNPL: {$paymentMethod->getName()}, Amount: $amount");
+        $this->logger->log("[GOOD][LSP] BNPL: {$paymentMethod->getName()}, Amount: $amount in $installments installments");
 
         // Notify the user
-        $this->notifier->send("BNPL of $amount via {$paymentMethod->getName()} completed.");
+        $this->notifier->send("BNPL of $amount in $installments installments via {$paymentMethod->getName()} completed.");
     }
 }

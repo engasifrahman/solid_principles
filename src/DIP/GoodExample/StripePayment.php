@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\DIP\GoodExample;
 
 use Solid\DIP\GoodExample\Contracts\IPaymentMethod;

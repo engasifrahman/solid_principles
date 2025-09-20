@@ -1,5 +1,6 @@
 <?php
-namespace Solid\LSP;
+
+namespace Solid\Common;
 
 class Logger
 {

@@ -1,9 +1,10 @@
 <?php
+
 require __DIR__ . '/../vendor/autoload.php';
 
-use Solid\SRP\GoodExample\Logger;
-use Solid\SRP\GoodExample\EmailNotifier;
-use Solid\SRP\GoodExample\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 use Solid\SRP\BadExample\PaymentProcessor as BadPaymentProcessor;
 use Solid\SRP\GoodExample\PaymentProcessor as GoodPaymentProcessor;
 

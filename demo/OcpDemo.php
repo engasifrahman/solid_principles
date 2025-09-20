@@ -1,9 +1,10 @@
 <?php
+
 require __DIR__ . '/../vendor/autoload.php';
 
-use Solid\OCP\Logger;
-use Solid\OCP\EmailNotifier;
-use Solid\OCP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 use Solid\OCP\GoodExample\PaypalPayment;
 use Solid\OCP\GoodExample\StripePayment;
 use Solid\OCP\BadExample\PaymentProcessor as BadPaymentProcessor;

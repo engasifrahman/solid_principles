@@ -1,9 +1,10 @@
 <?php
+
 namespace Solid\OCP\GoodExample;
 
-use Solid\OCP\Logger;
-use Solid\OCP\EmailNotifier;
-use Solid\OCP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 use Solid\OCP\GoodExample\Contracts\IPaymentMethod;
 
 class PaymentProcessor
@@ -25,7 +26,7 @@ class PaymentProcessor
         $paymentMethod->pay($amount);
 
         // Save to DB
-        $this->repository->save($paymentMethod->getName(), $amount);
+        $this->repository->savePayment($paymentMethod->getName(), $amount);
 
         // Logging
         $this->logger->log("[GOOD][OCP] Payment: {$paymentMethod->getName()}, Amount: $amount");

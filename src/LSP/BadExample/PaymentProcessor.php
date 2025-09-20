@@ -1,9 +1,10 @@
 <?php
+
 namespace Solid\LSP\BadExample;
 
-use Solid\LSP\Logger;
-use Solid\LSP\EmailNotifier;
-use Solid\LSP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 
 class PaymentProcessor
 {
@@ -23,7 +24,7 @@ class PaymentProcessor
         $paymentMethod->pay($amount);
 
         // Save the payment
-        $this->repository->save($paymentMethod->getName(), $amount);
+        $this->repository->savePayment($paymentMethod->getName(), $amount);
 
         // Log the payment
         $this->logger->log("[BAD][LSP] Payment: {$paymentMethod->getName()}, Amount: $amount");
@@ -38,12 +39,12 @@ class PaymentProcessor
         $paymentMethod->buyNowPayLater($amount, $installments);
 
         // Save the payment
-        $this->repository->save($paymentMethod->getName(), $amount);
+        $this->repository->saveBNPL($paymentMethod->getName(), $amount, $installments);
 
         // Log the payment
-        $this->logger->log("[BAD][LSP] BNPL: {$paymentMethod->getName()}, Amount: $amount");
+        $this->logger->log("[BAD][LSP] BNPL: {$paymentMethod->getName()}, Amount: $amount in $installments installments");
 
         // Notify the user
-        $this->notifier->send("BNPL of $amount via {$paymentMethod->getName()} completed.");
+        $this->notifier->send("BNPL of $amount in $installments installments via {$paymentMethod->getName()} completed.");
     }
 }

@@ -1,9 +1,10 @@
 <?php
+
 require __DIR__ . '/../vendor/autoload.php';
 
-use Solid\LSP\Logger;
-use Solid\LSP\EmailNotifier;
-use Solid\LSP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 use Solid\LSP\badExample\PaypalPayment as badPaypalPayment;
 use Solid\LSP\badExample\StripePayment as badStripePayment;
 use Solid\LSP\GoodExample\PaypalPayment as GoodPaypalPayment;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\ISP\BadExample;
 
 use Solid\ISP\BadExample\Contracts\IPaymentmethod;

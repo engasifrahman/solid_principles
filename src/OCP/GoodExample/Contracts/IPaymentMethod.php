@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\OCP\GoodExample\Contracts;
 
 interface IPaymentMethod

@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\ISP\GoodExample;
 
 use Solid\ISP\GoodExample\Contracts\IRefundable;

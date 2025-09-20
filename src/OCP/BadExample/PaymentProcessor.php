@@ -1,9 +1,10 @@
 <?php
+
 namespace Solid\OCP\BadExample;
 
-use Solid\OCP\Logger;
-use Solid\OCP\EmailNotifier;
-use Solid\OCP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 
 class PaymentProcessor
 {
@@ -39,7 +40,7 @@ class PaymentProcessor
         }
 
         // Save to DB
-        $this->repository->save($method, $amount);
+        $this->repository->savePayment($method, $amount);
 
         // Logging
         $this->logger->log("[BAD][OCP] Payment: {$method}, Amount: $amount");

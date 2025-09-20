@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\LSP\BadExample;
 
 class StripePayment extends PaymentMethod

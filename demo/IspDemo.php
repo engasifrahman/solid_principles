@@ -1,9 +1,10 @@
 <?php
+
 require __DIR__ . '/../vendor/autoload.php';
 
-use Solid\ISP\Logger;
-use Solid\ISP\EmailNotifier;
-use Solid\ISP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 use Solid\ISP\BadExample\PayPalPayment as BadPayPalPayment;
 use Solid\ISP\BadExample\StripePayment as BadStripePayment;
 use Solid\ISP\GoodExample\PayPalPayment as GoodPayPalPayment;
@@ -28,7 +29,7 @@ echo "\n---- Stripe recurring payment ----\n";
 $processor->processRecurring($stripe, 1500, 'monthly');
 
 echo "\n---- Stripe refund ----\n";
-$processor->processRefund($stripe, 500);
+$processor->processRefund($stripe, 500, 'Product defect');
 
 echo "\n---- PayPal normal payment ----\n";
 $processor->processPayment($paypal, 2000);
@@ -41,7 +42,7 @@ try {
 }
 
 echo "\n---- PayPal refund ----\n";
-$processor->processRefund($paypal, 1000);
+$processor->processRefund($paypal, 1000, 'Order cancellation');
 
 /* -------------------------------------------------------------------------- */
 
@@ -63,13 +64,13 @@ echo "\n---- Stripe recurring payment ----\n";
 $processor->processRecurring($stripe, 1500, 'monthly');
 
 echo "\n---- Stripe refund ----\n";
-$processor->processRefund($stripe, 500);
+$processor->processRefund($stripe, 500, 'Product defect');
 
 echo "\n---- PayPal normal payment ----\n";
 $processor->processPayment($paypal, 2000);
 
 echo "\n---- PayPal refund ----\n";
-$processor->processRefund($paypal, 1000);
+$processor->processRefund($paypal, 1000, 'Order cancellation');
 
 // No recurring method needed for PayPal → ISP respected
 

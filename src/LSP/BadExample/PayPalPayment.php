@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\LSP\BadExample;
 
 class PayPalPayment extends PaymentMethod

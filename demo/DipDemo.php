@@ -1,14 +1,15 @@
 <?php
+
 require __DIR__ . '/../vendor/autoload.php';
 
-use Solid\DIP\Logger;
-use Solid\DIP\EmailNotifier;
-use Solid\DIP\PaymentRepository;
-use Solid\DIP\BadExample\StripePayment AS BadStripePayment;
-use Solid\DIP\GoodExample\PayPalPayment AS GoodPayPalPayment;
-use Solid\DIP\GoodExample\StripePayment AS GoodStripePayment;
-use Solid\DIP\BadExample\PaymentProcessor AS BadPaymentProcessor;
-use Solid\DIP\GoodExample\PaymentProcessor AS GoodPaymentProcessor;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
+use Solid\DIP\BadExample\StripePayment as BadStripePayment;
+use Solid\DIP\GoodExample\PayPalPayment as GoodPayPalPayment;
+use Solid\DIP\GoodExample\StripePayment as GoodStripePayment;
+use Solid\DIP\BadExample\PaymentProcessor as BadPaymentProcessor;
+use Solid\DIP\GoodExample\PaymentProcessor as GoodPaymentProcessor;
 
 echo "============ BAD DIP ============\n";
 $processor = new BadPaymentProcessor(
@@ -36,4 +37,3 @@ echo "\n---- PayPal payment ----\n";
 $processor->process(new GoodPayPalPayment(), 500);
 
 echo "\nCheck logs at demo/Logs/app.log\n";
-

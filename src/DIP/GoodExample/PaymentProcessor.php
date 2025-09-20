@@ -1,9 +1,10 @@
 <?php
+
 namespace Solid\DIP\GoodExample;
 
-use Solid\DIP\Logger;
-use Solid\DIP\EmailNotifier;
-use Solid\DIP\PaymentRepository;
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 use Solid\DIP\GoodExample\Contracts\IPaymentMethod;
 
 class PaymentProcessor
@@ -24,7 +25,7 @@ class PaymentProcessor
         $paymentMethod->pay($amount);
 
         // Save the payment
-        $this->repository->save($paymentMethod->getName(), $amount);
+        $this->repository->savePayment($paymentMethod->getName(), $amount);
 
         // Log the payment
         $this->logger->log("[GOOD][DIP] Payment: " . $paymentMethod->getName() . ", Amount: $amount");

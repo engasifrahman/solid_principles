@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\DIP\GoodExample\Contracts;
 
 interface IPaymentMethod

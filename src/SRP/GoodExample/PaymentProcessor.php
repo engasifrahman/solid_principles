@@ -1,5 +1,10 @@
 <?php
+
 namespace Solid\SRP\GoodExample;
+
+use Solid\Common\Logger;
+use Solid\Common\EmailNotifier;
+use Solid\Common\PaymentRepository;
 
 class PaymentProcessor
 {
@@ -17,7 +22,7 @@ class PaymentProcessor
     public function pay(float $amount): void
     {
         // 1. Business logic (only payment responsibility)
-        $this->repository->save($amount);
+        $this->repository->savePayment(null, $amount);
         echo "Payment of $amount processed and saved to in-memory DB.\n";
 
         // Delegate other responsibilities

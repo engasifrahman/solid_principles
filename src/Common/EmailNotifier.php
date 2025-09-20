@@ -1,5 +1,6 @@
 <?php
-namespace Solid\DIP;
+
+namespace Solid\Common;
 
 class EmailNotifier
 {

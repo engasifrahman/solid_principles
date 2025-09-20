@@ -1,4 +1,5 @@
 <?php
+
 namespace Solid\SRP\BadExample;
 
 use PDO;

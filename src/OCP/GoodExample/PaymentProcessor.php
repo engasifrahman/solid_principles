@@ -4,7 +4,7 @@ namespace Solid\OCP\GoodExample;
 use Solid\OCP\Logger;
 use Solid\OCP\EmailNotifier;
 use Solid\OCP\PaymentRepository;
-use Solid\OCP\GoodExample\Contracts\PaymentMethod;
+use Solid\OCP\GoodExample\Contracts\IPaymentMethod;
 
 class PaymentProcessor
 {
@@ -19,7 +19,7 @@ class PaymentProcessor
         $this->notifier = $notifier;
     }
 
-    public function processPayment(PaymentMethod $paymentMethod, float $amount): void
+    public function processPayment(IPaymentMethod $paymentMethod, float $amount): void
     {
         // Delegate payment execution
         $paymentMethod->pay($amount);

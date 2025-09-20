@@ -12,7 +12,7 @@
 ---
 
 ## 🟢 Good Example
-- Define a `PaymentMethod` **interface**.
+- Define a `IPaymentMethod` **interface**.
 - Each new payment method (Stripe, PayPal, ApplePay, etc.) implements the interface.
 - `PaymentProcessor` depends on the abstraction, not concrete classes.
 - Adding a new payment method = just add a new class, **no modification required**.

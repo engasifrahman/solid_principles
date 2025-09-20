@@ -1,9 +1,9 @@
 <?php
 namespace Solid\OCP\GoodExample;
 
-use Solid\OCP\GoodExample\Contracts\PaymentMethod;
+use Solid\OCP\GoodExample\Contracts\IPaymentMethod;
 
-class StripePayment implements PaymentMethod
+class StripePayment implements IPaymentMethod
 {
     public function pay(float $amount): void
     {

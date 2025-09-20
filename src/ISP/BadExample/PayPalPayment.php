@@ -1,11 +1,23 @@
 <?php
 namespace Solid\ISP\BadExample;
 
-class PayPalPayment implements IPaymentGateway
+use Solid\ISP\BadExample\Contracts\IPaymentMethod;
+
+class PayPalPayment implements IPaymentMethod
 {
+    public function getName(): string
+    {
+        return "PayPal";
+    }
+
     public function pay(float $amount): void
     {
-        echo "Paid $amount via PayPal\n";
+        echo "💳 Processing $amount via PayPal...\n";
+
+        // Simulate PayPal payment processing logic
+        // This could involve API calls, etc.
+
+        echo "💳 PayPal payment of $amount processed successfully.\n\n";
     }
 
     public function scheduleRecurring(float $amount, string $interval): void
@@ -16,6 +28,11 @@ class PayPalPayment implements IPaymentGateway
 
     public function refund(float $amount): void
     {
-        echo "PayPal refunded $amount\n";
+        echo "💳 Processing $amount refund via PayPal...\n";
+
+        // Simulate PayPal payment processing logic
+        // This could involve API calls, etc.
+
+        echo "💳 PayPal refund of $amount processed successfully.\n\n";
     }
 }

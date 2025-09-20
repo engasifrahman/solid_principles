@@ -24,9 +24,15 @@ class PaymentProcessor
     public function processPayment(IPaymentMethod $paymentMethod, float $amount): void
     {
         $paymentMethod->pay($amount);
-        $this->repository->save(get_class($paymentMethod), $amount);
-        $this->logger->log("[GOOD][ISP] Payment: " . get_class($paymentMethod) . ", Amount: $amount");
-        $this->notifier->send("Payment of $amount via " . get_class($paymentMethod) . " completed.");
+
+        // Save the payment
+        $this->repository->save($paymentMethod->getName(), $amount);
+
+        // Log the payment
+        $this->logger->log("[GOOD][ISP] Payment: " . $paymentMethod->getName() . ", Amount: $amount");
+
+        // Notify the user
+        $this->notifier->send("Payment of $amount via " . $paymentMethod->getName() . " completed.");
     }
 
     public function processRecurring(IRecurringPayment $paymentMethod, float $amount, string $interval): void

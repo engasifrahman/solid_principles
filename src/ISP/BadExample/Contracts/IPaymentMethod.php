@@ -1,8 +1,10 @@
 <?php
-namespace Solid\ISP\BadExample;
+namespace Solid\ISP\BadExample\Contracts;
 
-interface IPaymentGateway
+interface IPaymentMethod
 {
+    public function getName(): string;
+
     public function pay(float $amount): void;
 
     // Not all gateways support recurring payments

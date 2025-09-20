@@ -12,7 +12,7 @@ class PaypalPayment implements IPaymentMethod
         // Simulate PayPal payment processing logic
         // This could involve API calls, etc.   
 
-        echo "💳 PayPal payment of $amount processed successfully.\n";
+        echo "💳 PayPal payment of $amount processed successfully.\n\n";
     }
 
     public function getName(): string

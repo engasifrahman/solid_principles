@@ -26,14 +26,14 @@ class PaymentProcessor
             // Simulate Stripe payment processing Logic
             // This could involve API calls, etc.
 
-            echo "💳 Stripe payment of $amount processed successfully.\n";
+            echo "💳 Stripe payment of $amount processed successfully.\n\n";
         } elseif ($method === 'paypal') {
             echo "💳 Processing $amount via PayPal...\n";
 
             // Simulate PayPal payment processing logic
             // This could involve API calls, etc.
 
-            echo "💳 PayPal payment of $amount processed successfully.\n";
+            echo "💳 PayPal payment of $amount processed successfully.\n\n";
         } else {
             throw new \Exception("Unsupported payment method: $method");
         }

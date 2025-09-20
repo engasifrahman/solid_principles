@@ -12,7 +12,7 @@ class StripePayment implements IPaymentMethod
         // Simulate Stripe payment processing logic
         // This could involve API calls, etc.
 
-        echo "💳 Stripe payment of $amount processed successfully.\n";
+        echo "💳 Stripe payment of $amount processed successfully.\n\n";
     }
 
     public function getName(): string

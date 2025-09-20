@@ -15,7 +15,7 @@
 ---
 
 ## 🟢 Good Example
-- We introduce a separate interface `BuyNowPayLater`.
+- We introduce a separate interface `IBuyNowPayLater`.
 - Only Stripe implements BNPL.
 - `PaymentProcessor` handles payments and BNPL via correct interfaces.
 - ✅ LSP respected: each subclass only implements what it supports.

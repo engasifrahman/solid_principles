@@ -1,7 +1,7 @@
 <?php
 namespace Solid\LSP\GoodExample\Contracts;
 
-interface PaymentMethod
+interface IPaymentMethod
 {
     public function pay(float $amount): void;
     public function getName(): string;

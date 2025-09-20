@@ -4,8 +4,8 @@ namespace Solid\LSP\GoodExample;
 use Solid\LSP\Logger;
 use Solid\LSP\EmailNotifier;
 use Solid\LSP\PaymentRepository;
-use Solid\LSP\GoodExample\Contracts\PaymentMethod;
-use Solid\LSP\GoodExample\Contracts\BuyNowPayLater;
+use Solid\LSP\GoodExample\Contracts\IPaymentMethod;
+use Solid\LSP\GoodExample\Contracts\IBuyNowPayLater;
 
 class PaymentProcessor
 {
@@ -20,7 +20,7 @@ class PaymentProcessor
         $this->notifier = $notifier;
     }
 
-    public function processPayment(PaymentMethod $paymentMethod, float $amount): void
+    public function processPayment(IPaymentMethod $paymentMethod, float $amount): void
     {
         $paymentMethod->pay($amount);
     
@@ -34,7 +34,7 @@ class PaymentProcessor
         $this->notifier->send("Payment of $amount via {$paymentMethod->getName()} completed.");
     }
 
-    public function processBNPL(BuyNowPayLater $paymentMethod, float $amount, int $installments): void
+    public function processBNPL(IBuyNowPayLater $paymentMethod, float $amount, int $installments): void
     {
         $paymentMethod->buyNowPayLater($amount, $installments);
 

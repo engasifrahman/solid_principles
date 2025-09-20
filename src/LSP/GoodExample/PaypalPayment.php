@@ -1,9 +1,9 @@
 <?php
 namespace Solid\LSP\GoodExample;
 
-use Solid\LSP\GoodExample\Contracts\PaymentMethod;
+use Solid\LSP\GoodExample\Contracts\IPaymentMethod;
 
-class PaypalPayment implements PaymentMethod
+class PaypalPayment implements IPaymentMethod
 {
     public function getName(): string
     {

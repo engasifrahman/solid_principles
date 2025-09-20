@@ -1,10 +1,10 @@
 <?php
 namespace Solid\LSP\GoodExample;
 
-use Solid\LSP\GoodExample\Contracts\PaymentMethod;
-use Solid\LSP\GoodExample\Contracts\BuyNowPayLater;
+use Solid\LSP\GoodExample\Contracts\IPaymentMethod;
+use Solid\LSP\GoodExample\Contracts\IBuyNowPayLater;
 
-class StripePayment implements PaymentMethod, BuyNowPayLater
+class StripePayment implements IPaymentMethod, IBuyNowPayLater
 {
     public function getName(): string
     {

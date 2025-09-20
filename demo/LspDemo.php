@@ -11,11 +11,7 @@ use Solid\LSP\GoodExample\StripePayment as GoodStripePayment;
 use Solid\LSP\BadExample\PaymentProcessor as BadPaymentProcessor;
 use Solid\LSP\GoodExample\PaymentProcessor as GoodPaymentProcessor;
 
-$logDir = __DIR__ . "/Logs";
-if (!is_dir($logDir)) mkdir($logDir, 0777, true);
-
-
-echo "==== BAD LSP Demo ====\n";
+echo "============ BAD LSP Demo ============\n";
 $processor = new BadPaymentProcessor(
     new PaymentRepository(),
     new Logger(),
@@ -40,7 +36,9 @@ try {
     echo "Error: " . $e->getMessage() . "\n";
 }
 
-echo "\n==== GOOD LSP ====\n";
+/* -------------------------------------------------------------------------- */
+
+echo "\n============ GOOD LSP ============\n";
 $processor = new GoodPaymentProcessor(
     new PaymentRepository(),
     new Logger(),
@@ -61,4 +59,4 @@ $processor->processPayment($paypal, 2500);
 
 // We didnt executed BNPL for PayPal because GoodPaypalPayment did not implement BuyNowPayLater, So it respects LSP
 
-echo "\nCheck logs at demo/Logs/payment.log\n";
+echo "\nCheck logs at demo/Logs/app.log\n";

@@ -10,7 +10,12 @@ class PayPalPayment extends PaymentMethod
 
     public function pay(float $amount): void
     {
-        echo "Paid $amount via PayPal\n";
+        echo "💳 Processing $amount via PayPal...\n";
+
+        // Simulate PayPal payment processing logic
+        // This could involve API calls, etc.
+
+        echo "💳 PayPal payment of $amount processed successfully.\n";
     }
 
     // ❌ Violation: PayPal cannot support BNPL

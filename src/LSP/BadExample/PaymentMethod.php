@@ -1,8 +1,10 @@
 <?php
 namespace Solid\LSP\BadExample;
 
-class PaymentMethod
+abstract class PaymentMethod
 {
+    abstract public function getName(): string;
+
     public function pay(float $amount): void
     {
         echo "Paid $amount via generic payment method\n";
